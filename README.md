@@ -14,6 +14,14 @@
 
 I'm a huge fan of Blade Runner. And I find the **Blade Runner 2049 LAPD aesthetic absolutely inspiring**: amazing, poetic, a genuine piece of art. The phosphor glow on black glass, the chromatic-aberration fringe on every glyph, the quiet hum of scanlines and film grain, the spare Orbitron numerals sitting in the dark like something half-remembered. It's restraint and atmosphere doing the work. It's beautiful.
 
+<div align="center">
+
+![Lt. Joshi at her LAPD terminal in Blade Runner 2049](docs/screenshots/inspiration-br2049-lapd-joshi.png)
+
+*The direct inspiration: Lt. Joshi (Robin Wright) at her LAPD workstation in* **Blade Runner 2049** *. Those teal terminals are exactly what this kit is reaching for. (Film still, included here purely as a visual reference.)*
+
+</div>
+
 I wanted to **port my own systems into that world.**
 
 This isn't a throwaway theme experiment. I *dogfood* my tools. I sit in front of my own software for hours and hours, every day. If I'm going to spend my life inside an interface, it shouldn't just be usable. It should be something I'm **in love with.** Something that makes the work feel like it belongs to a future worth looking at.
