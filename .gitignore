@@ -1,0 +1,23 @@
+# ── Claude Code / AI assistant artifacts ──────────────────────
+# Local, machine-specific Claude settings & caches (may contain
+# local paths, permissions, and other non-public details).
+.claude/
+CLAUDE.local.md
+.aider*
+.cursor/
+
+# ── OS junk ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor / IDE ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+
+# ── Dependencies / build output (future-proofing) ─────────────
+node_modules/
+dist/
+build/
