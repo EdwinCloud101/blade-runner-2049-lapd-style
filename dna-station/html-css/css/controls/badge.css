@@ -1,0 +1,41 @@
+/* ============================================================
+   CONTROL · STATUS BADGE
+   requires: core.css
+   markup:
+     <div class="badges">
+       <span class="badge on"><i></i>ONLINE</span>
+       <span class="badge"><i></i>STANDBY</span>
+       <span class="badge alert"><i></i>RESTRICTED</span>
+     </div>
+   ============================================================ */
+.badges{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.badge{
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:8px; letter-spacing:2px;
+  padding:4px 9px;
+  color:var(--teal-mid);
+  background:rgba(40, 120, 110, .10);
+  border:1px solid var(--line-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+}
+.badge i{
+  width:5px; height:5px; flex:none;
+  background:currentColor;
+  box-shadow:0 0 5px currentColor;
+}
+.badge.on{
+  color:var(--teal-bright);
+  background:rgba(60, 180, 165, .14);
+  border-color:rgba(150, 245, 226, .75);
+  text-shadow:
+    -1px 0 0 var(--red-ab),
+     0 0 5px rgba(140,245,225,.9);
+  box-shadow:0 0 9px rgba(95, 232, 210, .35), inset 0 0 6px rgba(95, 232, 210, .20);
+}
+.badge.alert{
+  color:#ff9a72;
+  background:rgba(120, 40, 20, .14);
+  border-color:rgba(255, 110, 60, .55);
+  text-shadow:0 0 6px rgba(255, 100, 50, .55);
+  box-shadow:0 0 9px rgba(255, 90, 40, .25), inset 0 0 6px rgba(255, 90, 40, .15);
+}

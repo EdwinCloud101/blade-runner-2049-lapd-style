@@ -1,0 +1,49 @@
+/* ============================================================
+   CONTROL · IMAGE UPLOAD  (dashed drop zone)
+   requires: core.css
+   markup:
+     <label class="upload">
+       <input type="file" accept="image/*">
+       <span class="inner">
+         <svg>...arrow icon...</svg>
+         <div class="l1">DROP IMAGE FILE</div>
+         <div class="l2">OR CLICK TO BROWSE // 8 MB MAX</div>
+       </span>
+     </label>
+   ============================================================ */
+.upload{
+  position:relative;
+  height:150px;
+  border:1px dashed rgba(110, 220, 200, .38);
+  background:var(--fill-well);
+  box-shadow:inset 0 0 22px rgba(70, 200, 180, .07);
+  display:grid; place-items:center;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .2s, box-shadow .2s;
+}
+.upload:hover{
+  border-color:var(--line);
+  box-shadow:inset 0 0 26px rgba(70, 200, 180, .14), 0 0 18px rgba(95, 232, 210, .12);
+}
+.upload input[type=file]{
+  position:absolute; inset:0; opacity:0; cursor:pointer;
+}
+.upload .inner{ pointer-events:none; }
+.upload svg{
+  filter:
+    drop-shadow(0 0 6px rgba(95, 232, 210, .5))
+    drop-shadow(0 0 16px rgba(95, 232, 210, .22));
+}
+.upload .l1{
+  margin-top:10px;
+  font-size:10px; letter-spacing:3px;
+  color:var(--teal-mid);
+  text-shadow:0 0 5px rgba(90,220,200,.4);
+}
+.upload .l2{
+  margin-top:4px;
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-dim);
+}
+.upload:focus-within{ outline:1px dashed var(--teal-dim); outline-offset:4px; }

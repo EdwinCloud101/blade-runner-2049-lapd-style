@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAPD UI // TAB CONTROL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/core.css">
+<link rel="stylesheet" href="../css/controls/tabs.css">
+</head>
+<body>
+
+<div class="bg"></div>
+
+<main class="console">
+  <section>
+    <div class="sec"><span class="n">06</span><span class="t">TAB CONTROL</span><span class="jp">翻訳</span></div>
+    <div class="tabctl">
+      <input type="radio" id="tb1" name="tabs">
+      <input type="radio" id="tb2" name="tabs" checked>
+      <input type="radio" id="tb3" name="tabs">
+      <div class="tabbar">
+        <label for="tb1">HISTORY</label>
+        <label for="tb2">TRANSLATE</label>
+        <label for="tb3">DATA</label>
+      </div>
+      <div class="tabpanes">
+        <div class="pane p1">
+          <p>LOG 2049-06-10 // RETRIEVAL DISPATCHED.</p>
+          <p>LOG 2049-06-08 // FILE OPENED BY LT. JOSHI.</p>
+        </div>
+        <div class="pane p2">
+          <p>SOURCE STREAM LOCKED. OUTPUT: ENGLISH.</p>
+          <p>CONFIDENCE 0.97 // 2 SEGMENTS PENDING.</p>
+        </div>
+        <div class="pane p3">
+          <p>RECORDS ON FILE: 1187. RESTRICTED: 4.</p>
+          <p>LAST SYNC // SECTOR 6 ARCHIVE NODE.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="mottle"></div>
+<div class="scanlines"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="edge-glow"><i></i><i></i></div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* ============================================================
+   CONTROL · TOOLTIP  (CSS-only, hover, data-tip attribute)
+   requires: core.css
+   markup:
+     <p class="tipline">
+       FLAGGED UNDER <span class="tip" data-tip="SEC. 7">PROHIBITION</span>.
+     </p>
+   ============================================================ */
+.tipline{
+  font-size:11px; line-height:22px; letter-spacing:2px;
+  color:var(--teal-mid);
+  text-shadow:0 0 5px rgba(90,220,200,.3);
+}
+.tip{
+  position:relative;
+  color:var(--teal);
+  border-bottom:1px dashed var(--teal-dim);
+  cursor:help;
+  text-shadow:0 0 6px rgba(95, 232, 210, .45);
+}
+.tip::after{
+  content:attr(data-tip);
+  position:absolute; left:50%; bottom:calc(100% + 9px);
+  transform:translateX(-50%);
+  white-space:nowrap;
+  padding:6px 10px;
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-bright);
+  background:rgba(9, 27, 30, .97);
+  border:1px solid var(--line);
+  box-shadow:0 0 14px rgba(95, 232, 210, .25);
+  text-shadow:0 0 5px rgba(140,245,225,.7);
+  opacity:0; pointer-events:none;
+  transition:opacity .15s;
+  z-index:6;
+}
+.tip::before{
+  content:""; position:absolute; left:50%; bottom:calc(100% + 4px);
+  transform:translateX(-50%);
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:5px solid var(--line);
+  opacity:0; transition:opacity .15s;
+}
+.tip:hover::after, .tip:hover::before{ opacity:1; }

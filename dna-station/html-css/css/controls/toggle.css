@@ -1,0 +1,55 @@
+/* ============================================================
+   CONTROL · TOGGLE SWITCH
+   requires: core.css
+   markup:
+     <div class="opts">
+       <label class="tgl">
+         <input type="checkbox" checked>
+         <span class="tk"></span><span class="txt">LABEL</span>
+       </label>
+     </div>
+   ============================================================ */
+.opts{ display:flex; flex-direction:column; gap:12px; }
+
+.tgl{
+  display:flex; align-items:center; gap:12px;
+  cursor:pointer; width:fit-content;
+}
+.tgl input{ position:absolute; opacity:0; width:0; height:0; }
+.tgl .tk{
+  position:relative; flex:none;
+  width:38px; height:16px;
+  border:1px solid var(--line-dim);
+  background:rgba(20, 55, 55, .25);
+  box-shadow:inset 0 0 6px rgba(70, 200, 180, .10);
+  transition:border-color .15s, box-shadow .15s;
+}
+.tgl .tk::after{
+  content:""; position:absolute; top:2px; left:2px;
+  width:12px; height:10px;
+  background:rgba(80, 190, 175, .45);
+  transition:left .15s, background .15s, box-shadow .15s;
+}
+.tgl:hover .tk{ border-color:var(--line); }
+.tgl input:checked + .tk{
+  border-color:var(--line);
+  box-shadow:0 0 8px rgba(95, 232, 210, .25), inset 0 0 6px rgba(70, 200, 180, .18);
+}
+.tgl input:checked + .tk::after{
+  left:22px;
+  background:var(--teal);
+  box-shadow:0 0 7px var(--glow);
+}
+.tgl .txt{
+  font-size:10px; letter-spacing:3px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+  transition:color .15s, text-shadow .15s;
+}
+.tgl input:checked ~ .txt{
+  color:var(--teal);
+  text-shadow:
+    -1px .5px 0 rgba(255, 62, 30, .25),
+     0 0 6px rgba(95, 232, 210, .5);
+}
+.tgl input:focus-visible + .tk{ outline:1px dashed var(--teal-dim); outline-offset:3px; }

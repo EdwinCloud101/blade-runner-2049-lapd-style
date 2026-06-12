@@ -1,0 +1,78 @@
+/* ============================================================
+   CONTROL · TREE VIEW  (nested <details>, CSS-only)
+   requires: core.css
+   markup:
+     <div class="tree">
+       <details open>
+         <summary><span class="car"></span> ... NODE</summary>
+         <div class="tw">
+           <div class="leaf sel"> ... FILE</div>
+         </div>
+       </details>
+     </div>
+   ============================================================ */
+.tree{
+  border:1px solid var(--line-dim);
+  background:var(--fill-well);
+  box-shadow:inset 0 0 22px rgba(70, 200, 180, .07);
+  padding:10px 12px;
+  font-size:10px; letter-spacing:2px;
+  width:min(420px, 100%);
+}
+.tree summary{
+  list-style:none;
+  display:flex; align-items:center; gap:8px;
+  height:27px; padding:0 7px;
+  cursor:pointer;
+  color:var(--teal-mid);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+  transition:background .12s, color .12s;
+}
+.tree summary::-webkit-details-marker{ display:none; }
+.tree summary:hover{
+  background:rgba(80, 210, 190, .07);
+  color:var(--teal-bright);
+}
+.tree .car{
+  flex:none; width:0; height:0;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  border-left:5px solid var(--teal-dim);
+  filter:drop-shadow(0 0 3px rgba(90,220,200,.4));
+  transition:transform .15s;
+}
+.tree details[open] > summary .car{ transform:rotate(90deg); }
+.tree svg{
+  flex:none;
+  stroke:var(--teal-mid); fill:none;
+  stroke-width:1.4; stroke-linecap:square;
+  filter:drop-shadow(0 0 3px rgba(95, 232, 210, .35));
+}
+.tree .fo{ display:none; }
+.tree details[open] > summary .fo{ display:inline; }
+.tree details[open] > summary .fc{ display:none; }
+.tree .tw{
+  margin-left:10px; padding-left:15px;
+  border-left:1px solid var(--line-faint);
+}
+.tree .leaf{
+  display:flex; align-items:center; gap:8px;
+  height:27px; padding:0 7px 0 18px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.25);
+  cursor:pointer;
+  transition:background .12s, color .12s;
+}
+.tree .leaf:hover{
+  background:rgba(80, 210, 190, .07);
+  color:var(--teal-bright);
+}
+.tree .leaf.sel{
+  background:rgba(80, 210, 190, .10);
+  color:var(--teal);
+  box-shadow:inset 2px 0 0 var(--teal);
+  text-shadow:
+    -1px .5px 0 rgba(255, 62, 30, .25),
+     0 0 6px rgba(95, 232, 210, .5);
+}
+.tree .leaf svg{ stroke:currentColor; }

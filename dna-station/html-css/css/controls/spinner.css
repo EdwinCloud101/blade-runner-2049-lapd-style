@@ -1,0 +1,32 @@
+/* ============================================================
+   CONTROL · SPINNER  (loading indicators)
+   requires: core.css
+   markup:
+     <div class="spinrow">
+       <span class="spin mech"></span>     <!-- stepped/mechanical -->
+       <span class="spin smooth"></span>   <!-- smooth -->
+       <span class="spinlbl">WORKING&hellip;</span>
+     </div>
+   ============================================================ */
+.spinrow{ display:flex; align-items:center; gap:40px; }
+.spin{ position:relative; width:26px; height:26px; }
+.spin::before{
+  content:""; position:absolute; inset:0;
+  border:1px solid var(--line-faint);
+}
+.spin::after{
+  content:""; position:absolute; inset:0;
+  border:1px solid transparent;
+  border-top-color:var(--teal);
+  border-right-color:var(--teal);
+  filter:drop-shadow(0 0 4px rgba(95, 232, 210, .55));
+}
+.spin.mech::after{ animation:rot 1.4s steps(8) infinite; }
+.spin.smooth{ width:20px; height:20px; }
+.spin.smooth::after{ animation:rot 1.1s linear infinite; }
+@keyframes rot{ to{ transform:rotate(360deg); } }
+.spinlbl{
+  font-size:9px; letter-spacing:3px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+}

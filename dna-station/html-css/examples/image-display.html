@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAPD UI // IMAGE DISPLAY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/core.css">
+<link rel="stylesheet" href="../css/controls/image-display.css">
+</head>
+<body>
+
+<div class="bg"></div>
+
+<main class="console">
+  <section>
+    <div class="sec"><span class="n">09</span><span class="t">IMAGE DISPLAY</span><span class="jp">走査</span></div>
+    <div class="well imgdisp">
+      <i class="ck tl"></i><i class="ck tr"></i><i class="ck bl"></i><i class="ck br"></i>
+      <!-- vector scan target -->
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#5fe8d2" stroke-width="1.2">
+        <circle cx="60" cy="60" r="44" opacity=".55"/>
+        <circle cx="60" cy="60" r="28" opacity=".8"/>
+        <circle cx="60" cy="60" r="3"  fill="#aefcec" stroke="none"/>
+        <line x1="60" y1="4"   x2="60" y2="26"/>
+        <line x1="60" y1="94"  x2="60" y2="116"/>
+        <line x1="4"   y1="60" x2="26" y2="60"/>
+        <line x1="94"  y1="60" x2="116" y2="60"/>
+        <path d="M22 22 h12 M22 22 v12" opacity=".5"/>
+        <path d="M98 22 h-12 M98 22 v12" opacity=".5"/>
+        <path d="M22 98 h12 M22 98 v-12" opacity=".5"/>
+        <path d="M98 98 h-12 M98 98 v-12" opacity=".5"/>
+      </svg>
+    </div>
+    <div class="imgstrip">
+      <span class="jp">プロフィール</span>
+      <span class="bar"></span>
+      <span class="chip"></span>
+      <span class="tag">SCAN 09 // 1:1</span>
+    </div>
+  </section>
+</main>
+
+<div class="mottle"></div>
+<div class="scanlines"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="edge-glow"><i></i><i></i></div>
+
+</body>
+</html>

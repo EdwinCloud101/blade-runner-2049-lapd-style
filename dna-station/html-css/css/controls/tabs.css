@@ -1,0 +1,65 @@
+/* ============================================================
+   CONTROL · TAB CONTROL  (CSS-only, radio-driven)
+   requires: core.css
+   ------------------------------------------------------------
+   One radio per tab; the per-instance wiring at the bottom maps
+   each tab id to its active button + visible pane. Copy and
+   renumber the ids for each new tab control.
+   ============================================================ */
+.tabctl input{ position:absolute; opacity:0; width:0; height:0; }
+.tabbar{
+  display:flex; align-items:center; gap:26px;
+  padding:0 4px 10px;
+}
+.tabbar label{
+  position:relative;
+  font-size:9px; letter-spacing:2px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.25);
+  padding:3px 0;
+  cursor:pointer;
+  transition:color .15s, text-shadow .15s;
+}
+.tabbar label:hover{ color:var(--teal-mid); }
+.tabpanes{
+  border:1px solid var(--line-dim);
+  background:var(--fill-well);
+  box-shadow:inset 0 0 22px rgba(70, 200, 180, .08);
+  min-height:96px;
+  padding:14px 16px;
+}
+.tabpanes .pane{ display:none; }
+.tabpanes .pane p{
+  font-size:11px; line-height:20px; letter-spacing:2px;
+  color:var(--teal-mid);
+  text-shadow:0 0 5px rgba(90,220,200,.35);
+}
+.tabpanes .pane p + p{ margin-top:6px; color:var(--teal-dim); }
+
+/* ---- per-instance wiring (demo: ids tb1..tb3) ------------- */
+/* active tab = the bright bracket-ringed TRANSLATE button */
+#tb1:checked ~ .tabbar label[for=tb1],
+#tb2:checked ~ .tabbar label[for=tb2],
+#tb3:checked ~ .tabbar label[for=tb3]{
+  color:var(--teal-bright);
+  background:rgba(60, 180, 165, .14);
+  border:1px solid rgba(150, 245, 226, .75);
+  padding:3px 7px;
+  text-shadow:
+    -1px 0 0 var(--red-ab),
+     0 0 5px rgba(140,245,225,.9),
+     0 0 12px rgba(95,232,210,.5);
+  box-shadow:
+    0 0 0 2px rgba(95, 232, 210, .10),
+    0 0 9px  rgba(95, 232, 210, .40),
+    inset 0 0 6px rgba(95, 232, 210, .22);
+}
+#tb1:checked ~ .tabbar label[for=tb1]::after,
+#tb2:checked ~ .tabbar label[for=tb2]::after,
+#tb3:checked ~ .tabbar label[for=tb3]::after{
+  content:""; position:absolute; inset:-4px;
+  border:1px solid rgba(120, 235, 215, .22);
+}
+#tb1:checked ~ .tabpanes .p1,
+#tb2:checked ~ .tabpanes .p2,
+#tb3:checked ~ .tabpanes .p3{ display:block; }

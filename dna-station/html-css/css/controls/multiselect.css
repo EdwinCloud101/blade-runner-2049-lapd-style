@@ -1,0 +1,62 @@
+/* ============================================================
+   CONTROL · COMBOBOX / MULTI-SELECT  (checkbox-driven, CSS-only)
+   requires: core.css, combobox.css   (extends the .combo shell)
+   ------------------------------------------------------------
+   One checkbox per option; selected options surface as chips in
+   the summary. The per-instance wiring at the bottom maps each
+   option id to its chip + list highlight (demo ids ms1..ms4).
+   ============================================================ */
+.combo.multi{ width:340px; }
+.combo.multi summary{
+  height:auto; min-height:40px;
+  flex-wrap:wrap; gap:6px;
+  padding:6px 14px;
+}
+.combo.multi summary::after{ align-self:center; }
+.combo .ph{
+  font-size:10px; letter-spacing:2px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.25);
+}
+.mchip{
+  display:none; align-items:center;
+  font-size:8px; letter-spacing:2px;
+  padding:3px 7px;
+  color:var(--teal-bright);
+  border:1px solid var(--line);
+  background:rgba(60, 180, 165, .14);
+  text-shadow:0 0 5px rgba(140,245,225,.7);
+  box-shadow:0 0 6px rgba(95, 232, 210, .20);
+}
+.combo.multi .list label::after{
+  content:"\2715";
+  margin-left:auto;
+  font-size:10px;
+  opacity:0;
+  text-shadow:
+    -1px .5px 0 rgba(255, 64, 28, .35),
+     0 0 6px rgba(95, 232, 210, .55);
+  transition:opacity .12s;
+}
+
+/* ---- per-instance wiring (demo: ids ms1..ms4) ------------- */
+#ms1:checked ~ details .m1,
+#ms2:checked ~ details .m2,
+#ms3:checked ~ details .m3,
+#ms4:checked ~ details .m4{ display:inline-flex; }
+#ms1:checked ~ details .ph,
+#ms2:checked ~ details .ph,
+#ms3:checked ~ details .ph,
+#ms4:checked ~ details .ph{ display:none; }
+#ms1:checked ~ details .list label[for=ms1],
+#ms2:checked ~ details .list label[for=ms2],
+#ms3:checked ~ details .list label[for=ms3],
+#ms4:checked ~ details .list label[for=ms4]{
+  color:var(--teal);
+  background:rgba(80, 210, 190, .07);
+  text-shadow:0 0 6px rgba(95, 232, 210, .5);
+}
+#ms1:checked ~ details .list label[for=ms1]::after,
+#ms2:checked ~ details .list label[for=ms2]::after,
+#ms3:checked ~ details .list label[for=ms3]::after,
+#ms4:checked ~ details .list label[for=ms4]::after{ opacity:1; }

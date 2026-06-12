@@ -1,0 +1,55 @@
+/* ============================================================
+   CONTROL · COLOR PICKER  (swatches + native custom picker)
+   requires: core.css
+   markup:
+     <div class="colorrow">
+       <div class="swatches">
+         <label class="sw" style="color:#5fe8d2"><input type="radio" name="clr" checked><i></i></label>
+       </div>
+       <div class="custom-c">
+         <input type="color" value="#5fe8d2"><span class="cl">CUSTOM</span>
+       </div>
+     </div>
+   ============================================================ */
+.colorrow{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+.swatches{ display:flex; align-items:center; gap:13px; }
+.sw{ position:relative; cursor:pointer; }
+.sw input{ position:absolute; opacity:0; width:0; height:0; }
+.sw i{
+  display:block; width:22px; height:22px;
+  background:currentColor;
+  opacity:.9;
+  border:1px solid rgba(255, 255, 255, .14);
+  box-shadow:0 0 7px currentColor, inset 0 0 4px rgba(0,0,0,.35);
+  transition:box-shadow .15s, outline .15s;
+}
+.sw:hover i{ opacity:1; }
+.sw input:checked + i{
+  outline:1px solid var(--teal-bright);
+  outline-offset:3px;
+  box-shadow:0 0 12px currentColor, inset 0 0 4px rgba(0,0,0,.35);
+}
+.sw input:focus-visible + i{ outline:1px dashed var(--teal-dim); outline-offset:5px; }
+.custom-c{ display:flex; align-items:center; gap:10px; }
+input[type=color]{
+  -webkit-appearance:none; appearance:none;
+  width:40px; height:26px;
+  background:var(--fill-well);
+  border:1px solid var(--line-dim);
+  padding:2px;
+  cursor:pointer;
+  box-shadow:inset 0 0 8px rgba(70, 200, 180, .10);
+  transition:border-color .15s, box-shadow .15s;
+}
+input[type=color]:hover{
+  border-color:var(--line);
+  box-shadow:0 0 10px rgba(95, 232, 210, .25), inset 0 0 8px rgba(70, 200, 180, .14);
+}
+input[type=color]::-webkit-color-swatch-wrapper{ padding:0; }
+input[type=color]::-webkit-color-swatch{ border:none; }
+input[type=color]::-moz-color-swatch{ border:none; }
+.custom-c .cl{
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+}

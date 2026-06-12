@@ -1,0 +1,62 @@
+/* ============================================================
+   CONTROL · DATAGRID
+   requires: core.css
+   markup:
+     <div class="grid">
+       <div class="g-head"><span>ID</span>...</div>
+       <div class="g-row"><span class="id">4847</span>...<span class="x">x</span></div>
+       <div class="g-row sel">...</div>   <!-- selected row -->
+     </div>
+   adjust grid-template-columns to match your column count.
+   ============================================================ */
+.grid{
+  border:1px solid var(--line-dim);
+  background:var(--fill-well);
+  box-shadow:inset 0 0 22px rgba(70, 200, 180, .07);
+}
+.g-row, .g-head{
+  display:grid;
+  grid-template-columns:84px 1fr 110px 70px;
+  align-items:center;
+  height:36px;
+  padding:0 14px;
+  border-bottom:1px solid var(--line-faint);
+}
+.g-head{
+  height:30px;
+  background:linear-gradient(180deg, rgba(32, 95, 90, .22), rgba(14, 44, 45, .16));
+  border-bottom:1px solid var(--line-dim);
+}
+.g-head span{
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+}
+.g-row{ transition:background .12s; cursor:default; }
+.g-row:last-child{ border-bottom:none; }
+.g-row:hover{ background:rgba(80, 210, 190, .06); }
+.g-row span{
+  font-size:10px; letter-spacing:2px;
+  color:var(--teal-mid);
+  text-shadow:0 0 5px rgba(90,220,200,.3);
+}
+.g-row .id{
+  font-family:"Orbitron", sans-serif; font-weight:500;
+  font-size:11px; letter-spacing:2px;
+  color:var(--teal);
+  text-shadow:
+    -1px .5px 0 rgba(255, 62, 30, .25),
+     0 0 6px rgba(95, 232, 210, .45);
+}
+.g-row .x{
+  font-size:12px;
+  color:var(--teal-mid);
+  text-shadow:
+    -1px .5px 0 rgba(255, 64, 28, .35),
+     0 0 6px rgba(95, 232, 210, .55);
+}
+.g-row.sel{
+  background:rgba(80, 210, 190, .10);
+  box-shadow:inset 2px 0 0 var(--teal), inset 0 0 16px rgba(80, 210, 190, .10);
+}
+.g-row.sel span{ color:var(--teal); }

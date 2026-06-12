@@ -1,0 +1,386 @@
+/* ============================================================
+   BLADE RUNNER 2049 — LAPD CONSOLE UI KIT
+   core.css  ·  shared framework
+   ------------------------------------------------------------
+   design tokens · reset · page atmosphere (film/CRT layers) ·
+   hue-rotation themes · console chrome (masthead, sections,
+   footer) · scrollbar · edge halation.
+
+   Load this once, then add a control stylesheet from
+   css/controls/ for each control you use.
+   ============================================================ */
+
+/* ---------- design tokens ---------- */
+:root{
+  --teal:        #5fe8d2;
+  --teal-bright: #aefcec;
+  --teal-mid:    rgba(110, 230, 210, .75);
+  --teal-dim:    rgba(80, 190, 175, .42);
+  --line:        rgba(125, 235, 215, .50);
+  --line-dim:    rgba(110, 220, 200, .26);
+  --line-faint:  rgba(100, 210, 195, .14);
+  --red-ab:      rgba(255, 62, 30, .45);   /* chromatic aberration fringe */
+  --blue-ab:     rgba(40, 170, 255, .28);
+  --glow:        rgba(95, 232, 210, .55);
+  --bg-deep:     #03070b;
+  --fill-well:   rgba(16, 42, 45, .18);
+}
+
+/* ---------- reset + base ---------- */
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ background:var(--bg-deep); }
+body{
+  min-height:100vh;
+  padding:64px 0 90px;
+  font-family:"Share Tech Mono", monospace;
+  background:var(--bg-deep);
+}
+
+/* page background lives on its own fixed layer so themes can re-tint it */
+.bg{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 260px 110px at 3% 1%, rgba(0, 2, 3, .65), transparent 70%),
+    radial-gradient(ellipse 120% 60% at 50% 0%, rgba(38, 88, 98, .50) 0%, rgba(20, 48, 56, .40) 38%, rgba(5, 12, 16, 0) 78%),
+    linear-gradient(90deg, #060e13 0%, #0e1f26 18%, #102229 50%, #0e1f26 82%, #050b0f 100%);
+}
+
+/* ============================================================
+   THEMES — hue-rotation of the three colored layers.
+   theme radios live at body level so sibling selectors reach
+   .bg, .console and .edge-glow.
+   ============================================================ */
+.theme-radio{ position:fixed; opacity:0; pointer-events:none; }
+
+/* TEAL BLUE */
+#th2:checked ~ .bg{        filter:hue-rotate(34deg); }
+#th2:checked ~ .console{   filter:blur(.28px) hue-rotate(34deg); }
+#th2:checked ~ .edge-glow{ filter:hue-rotate(34deg); }
+/* TEAL BLUE V2 — lighter blue; bg rotated less so it stays blue, not purple */
+#th7:checked ~ .bg{        filter:hue-rotate(12deg) brightness(1.18) saturate(.95); }
+#th7:checked ~ .console{   filter:blur(.28px) hue-rotate(30deg) brightness(1.12); }
+#th7:checked ~ .edge-glow{ filter:hue-rotate(30deg) brightness(1.10); }
+/* AMBER — bg rotated further so it lands warm brown, not olive */
+#th3:checked ~ .bg{        filter:hue-rotate(-162deg) saturate(1.05); }
+#th3:checked ~ .console{   filter:blur(.28px) hue-rotate(-120deg) saturate(1.15); }
+#th3:checked ~ .edge-glow{ filter:hue-rotate(-120deg) saturate(1.15); }
+/* CRIMSON */
+#th4:checked ~ .bg{        filter:hue-rotate(-178deg) saturate(1.1); }
+#th4:checked ~ .console{   filter:blur(.28px) hue-rotate(-152deg) saturate(1.2); }
+#th4:checked ~ .edge-glow{ filter:hue-rotate(-152deg) saturate(1.2); }
+/* VIOLET */
+#th5:checked ~ .bg{        filter:hue-rotate(88deg); }
+#th5:checked ~ .console{   filter:blur(.28px) hue-rotate(106deg); }
+#th5:checked ~ .edge-glow{ filter:hue-rotate(106deg); }
+/* ZION DASHBOARD — inverted: dark ink line work on warm paper white.
+   glows invert into dark halos = ink bleed; film layers are toned down */
+#th6:checked ~ .bg{        filter:invert(1) hue-rotate(185deg) saturate(.20) brightness(1.07); }
+#th6:checked ~ .console{   filter:blur(.28px) invert(1) hue-rotate(185deg) saturate(.26) contrast(.97); }
+#th6:checked ~ .edge-glow{ filter:invert(1) saturate(0); opacity:.28; }
+#th6:checked ~ .vignette{  opacity:.35; }
+#th6:checked ~ .scanlines{ opacity:.45; }
+#th6:checked ~ .grain{     opacity:.10; }
+
+/* top bar holding the theme combobox (uses combobox.css for the shell) */
+.topbar{
+  display:flex; justify-content:flex-end;
+  margin-bottom:20px;
+}
+.theme-combo{ width:230px; }
+.theme-combo summary{ height:34px; font-size:10px; }
+.theme-combo summary .tlbl{
+  margin-right:10px;
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.25);
+}
+/* selected value display (radios are body-level siblings) */
+#th1:checked ~ .console .theme-combo .tv1,
+#th2:checked ~ .console .theme-combo .tv2,
+#th3:checked ~ .console .theme-combo .tv3,
+#th4:checked ~ .console .theme-combo .tv4,
+#th5:checked ~ .console .theme-combo .tv5,
+#th6:checked ~ .console .theme-combo .tv6,
+#th7:checked ~ .console .theme-combo .tv7{ display:inline; }
+/* selected option highlight in the open list */
+#th1:checked ~ .console .theme-combo label[for=th1],
+#th2:checked ~ .console .theme-combo label[for=th2],
+#th3:checked ~ .console .theme-combo label[for=th3],
+#th4:checked ~ .console .theme-combo label[for=th4],
+#th5:checked ~ .console .theme-combo label[for=th5],
+#th6:checked ~ .console .theme-combo label[for=th6],
+#th7:checked ~ .console .theme-combo label[for=th7]{
+  color:var(--teal);
+  background:rgba(80, 210, 190, .07);
+  text-shadow:0 0 6px rgba(95, 232, 210, .5);
+}
+
+/* page scrollbar, in-world */
+body::-webkit-scrollbar{ width:10px; }
+body::-webkit-scrollbar-track{ background:#050d11; }
+body::-webkit-scrollbar-thumb{
+  background:rgba(95, 220, 200, .30);
+  border:2px solid #050d11;
+}
+body::-webkit-scrollbar-thumb:hover{ background:rgba(125, 240, 220, .45); }
+
+::selection{ background:rgba(95, 232, 210, .30); color:var(--teal-bright); text-shadow:none; }
+
+/* ============================================================
+   FILM / CRT LAYERS (inert overlays — drop these at the end of
+   <body>, after .console)
+   ============================================================ */
+.mottle{
+  position:fixed; inset:0; z-index:30; pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='874' height='550'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.011 0.016' numOctaves='3' seed='7' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23m)'/></svg>");
+  mix-blend-mode:soft-light;
+  opacity:.42;
+}
+.scanlines{
+  position:fixed; inset:0; z-index:31; pointer-events:none;
+  background:repeating-linear-gradient(
+    180deg,
+    rgba(0, 4, 6, .13) 0px, rgba(0, 4, 6, .13) 1px,
+    transparent 1px,         transparent 3px
+  );
+  mix-blend-mode:multiply;
+}
+.grain{
+  position:fixed; inset:-80px; z-index:32; pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity:.17;
+  mix-blend-mode:overlay;
+  animation:grain .42s steps(5) infinite;
+}
+@keyframes grain{
+  0%  { transform:translate(0,0); }
+  20% { transform:translate(-28px, 14px); }
+  40% { transform:translate(16px, -32px); }
+  60% { transform:translate(-12px, -18px); }
+  80% { transform:translate(30px, 22px); }
+  100%{ transform:translate(-20px, 8px); }
+}
+.vignette{
+  position:fixed; inset:0; z-index:33; pointer-events:none;
+  background:
+    radial-gradient(ellipse 105% 90% at 50% 44%, transparent 40%, rgba(1, 4, 6, .45) 80%, rgba(0, 2, 3, .80) 100%),
+    linear-gradient(90deg, rgba(0,3,5,.60) 0%, transparent 8%, transparent 92%, rgba(0,3,5,.60) 100%);
+}
+
+/* ============================================================
+   EDGE HALATION — glass-edge glow, left & right viewport edges.
+   layered: wide wash -> hot band at the boundary -> core line ->
+   patchy hotspots. brightest AT the edge, no gap.
+   markup: <div class="edge-glow"><i></i><i></i></div>
+   ============================================================ */
+.edge-glow{
+  position:fixed; inset:0; z-index:34; pointer-events:none;
+  mix-blend-mode:screen;
+  animation:eg-breathe 7s ease-in-out infinite;
+}
+/* wide inward wash */
+.edge-glow::before{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(90deg,  rgba(85, 230, 192, .26) 0%, rgba(65, 200, 170, .09) 5%, transparent 11%),
+    linear-gradient(-90deg, rgba(85, 230, 192, .30) 0%, rgba(65, 200, 170, .10) 5%, transparent 11%),
+    radial-gradient(ellipse 120px 30% at 0% 26%,    rgba(110, 245, 205, .18), transparent 75%),
+    radial-gradient(ellipse 120px 26% at 0% 72%,    rgba(110, 245, 205, .14), transparent 75%),
+    radial-gradient(ellipse 120px 28% at 100% 34%,  rgba(110, 245, 205, .16), transparent 75%),
+    radial-gradient(ellipse 120px 30% at 100% 80%,  rgba(110, 245, 205, .19), transparent 75%);
+  filter:blur(9px);
+}
+/* hot band hugging the boundary */
+.edge-glow::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(90deg,  rgba(195, 255, 236, .42) 0px, rgba(150, 252, 220, .20) 20px, transparent 56px),
+    linear-gradient(-90deg, rgba(195, 255, 236, .48) 0px, rgba(150, 252, 220, .22) 20px, transparent 56px);
+  filter:blur(2.5px);
+}
+/* core lines at the very edge — uneven on purpose */
+.edge-glow i{
+  position:absolute; top:0; bottom:0; width:2.5px;
+  filter:blur(.7px);
+}
+.edge-glow i:first-child{
+  left:0;
+  background:linear-gradient(180deg,
+    rgba(210, 255, 240, .55) 0%,
+    rgba(235, 255, 248, .95) 16%,
+    rgba(205, 255, 238, .6)  38%,
+    rgba(240, 255, 250, 1)   58%,
+    rgba(215, 255, 240, .7)  78%,
+    rgba(235, 255, 248, .9)  94%,
+    rgba(210, 255, 240, .5)  100%);
+  box-shadow:
+    0 0 6px  rgba(190, 255, 232, .9),
+    0 0 16px rgba(130, 248, 210, .6),
+    0 0 38px rgba(90, 232, 192, .35);
+}
+.edge-glow i:last-child{
+  right:0;
+  background:linear-gradient(180deg,
+    rgba(210, 255, 240, .6)  0%,
+    rgba(205, 255, 238, .65) 12%,
+    rgba(240, 255, 250, 1)   32%,
+    rgba(212, 255, 240, .65) 55%,
+    rgba(238, 255, 249, .95) 76%,
+    rgba(205, 255, 238, .55) 92%,
+    rgba(215, 255, 240, .6)  100%);
+  box-shadow:
+    0 0 6px  rgba(190, 255, 232, .95),
+    0 0 16px rgba(130, 248, 210, .65),
+    0 0 38px rgba(90, 232, 192, .38);
+}
+@keyframes eg-breathe{
+  0%, 100%{ opacity:.92; }
+  30%     { opacity:1; }
+  52%     { opacity:.88; }
+  76%     { opacity:.98; }
+}
+
+/* ============================================================
+   PAGE COLUMN
+   ============================================================ */
+.console{
+  position:relative; z-index:10;
+  width:min(660px, calc(100vw - 56px));
+  margin:0 auto;
+  filter:blur(.28px);          /* soft optical capture */
+}
+
+/* ============================================================
+   MASTHEAD — page header, exact panel-head anatomy from the
+   source screen.
+   ============================================================ */
+.masthead{ position:relative; margin-left:50px; }
+
+.masthead .view-tab{
+  position:absolute; left:-50px; bottom:0; width:50px; height:52px;
+  background:linear-gradient(180deg, rgba(18, 52, 52, .55), rgba(10, 30, 32, .45));
+  border:1px solid var(--line-dim);
+  border-right:none;
+  box-shadow:inset 0 0 10px rgba(70, 200, 180, .10);
+  padding:4px 0 0 7px;
+}
+.masthead .view-tab .lbl{
+  display:block; font-size:7px; letter-spacing:2px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+}
+.masthead .view-tab .letter{
+  display:block; margin-top:1px;
+  font-family:"Orbitron", sans-serif; font-weight:600;
+  font-size:26px; line-height:1;
+  color:var(--teal);
+  text-shadow:
+    -1.5px .5px 0 var(--red-ab),
+     1px 0 0 var(--blue-ab),
+     0 0 7px var(--glow),
+     0 0 20px rgba(95,232,210,.35);
+}
+.masthead .head{
+  position:relative; height:60px;
+  background:linear-gradient(180deg, rgba(32, 95, 90, .30), rgba(14, 44, 45, .26));
+  border:1px solid var(--line);
+  clip-path:polygon(13px 0, 100% 0, 100% 100%, 0 100%, 0 13px);
+  box-shadow:
+    inset 0 0 14px rgba(80, 220, 198, .14),
+    inset 0 -1px 0 rgba(150, 245, 226, .35);
+  padding:7px 0 0 14px;
+}
+.masthead .head::before{
+  content:""; position:absolute; left:-3px; top:5.5px;
+  width:19px; height:1px;
+  background:var(--line);
+  transform:rotate(-45deg);
+}
+.masthead .head::after{
+  content:""; position:absolute; inset:2px;
+  border:1px solid rgba(120, 235, 215, .10);
+  pointer-events:none;
+}
+
+/* shared micro-label (the "▸ PROFILE ID" tier) */
+.microlbl{
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-mid);
+  text-shadow:0 0 5px rgba(90,220,200,.4);
+}
+.microlbl::before{
+  content:""; display:inline-block;
+  width:0; height:0; margin:0 6px 0 0;
+  border-left:4px solid var(--teal-mid);
+  border-top:3px solid transparent;
+  border-bottom:3px solid transparent;
+  filter:drop-shadow(0 0 3px rgba(90,220,200,.5));
+}
+
+.masthead .big{
+  margin-top:4px;
+  font-family:"Orbitron", sans-serif; font-weight:600;
+  font-size:22px; line-height:1; letter-spacing:4px;
+  color:var(--teal);
+  text-shadow:
+    -1.5px .5px 0 var(--red-ab),
+     1.5px 0 0 var(--blue-ab),
+     0 0 7px var(--glow),
+     0 0 22px rgba(95, 232, 210, .30);
+}
+.caret-bar{
+  display:inline-block; vertical-align:-2px;
+  width:3px; height:21px; margin-right:8px;
+  background:var(--teal-bright);
+  box-shadow:0 0 6px rgba(150, 248, 230, .9), 0 0 14px rgba(95, 232, 210, .5);
+  animation:caret 1.3s steps(1) infinite;
+}
+@keyframes caret{ 0%,100%{ opacity:1; } 55%{ opacity:.25; } }
+
+/* ============================================================
+   SECTIONS — wrap each control in <section> with a .sec header
+   ============================================================ */
+section{ margin-top:46px; }
+.sec{
+  display:flex; align-items:baseline; gap:10px;
+  border-bottom:1px solid var(--line-faint);
+  padding-bottom:5px; margin-bottom:14px;
+}
+.sec .n{
+  font-size:8px; letter-spacing:2px;
+  color:var(--teal-dim);
+}
+.sec .t{
+  font-size:10px; letter-spacing:3px;
+  color:var(--teal-mid);
+  text-shadow:0 0 5px rgba(90,220,200,.35);
+}
+.sec .jp{
+  margin-left:auto;
+  font-size:8px; letter-spacing:1px;
+  color:var(--teal-dim);
+  text-shadow:0 0 4px rgba(80,200,180,.3);
+}
+
+/* ============================================================
+   FOOTER BAR
+   ============================================================ */
+.footer-bar{
+  position:relative;
+  margin:64px auto 0; width:62%; height:5px;
+  background:linear-gradient(90deg,
+    rgba(120, 240, 220, .25) 0%,
+    var(--teal-bright) 12%,
+    var(--teal-bright) 88%,
+    rgba(120, 240, 220, .25) 100%);
+  box-shadow:
+    0 0 8px  rgba(150, 248, 230, .85),
+    0 0 22px rgba(95, 232, 210, .55),
+    0 0 48px rgba(95, 232, 210, .30);
+}
+.footer-bar::after{
+  content:""; position:absolute; left:-8px; right:-8px; top:9px; height:14px;
+  background:radial-gradient(ellipse 60% 100% at 50% 0%, rgba(110, 235, 212, .22), transparent 75%);
+  filter:blur(3px);
+}

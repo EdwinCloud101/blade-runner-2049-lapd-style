@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAPD // CONTROL INDEX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- framework -->
+<link rel="stylesheet" href="css/core.css">
+
+<!-- controls -->
+<link rel="stylesheet" href="css/controls/textarea.css">
+<link rel="stylesheet" href="css/controls/textbox.css">
+<link rel="stylesheet" href="css/controls/checkbox.css">
+<link rel="stylesheet" href="css/controls/radio.css">
+<link rel="stylesheet" href="css/controls/combobox.css">
+<link rel="stylesheet" href="css/controls/tabs.css">
+<link rel="stylesheet" href="css/controls/datagrid.css">
+<link rel="stylesheet" href="css/controls/slider.css">
+<link rel="stylesheet" href="css/controls/image-display.css">
+<link rel="stylesheet" href="css/controls/image-upload.css">
+<link rel="stylesheet" href="css/controls/button.css">
+<link rel="stylesheet" href="css/controls/toggle.css">
+<link rel="stylesheet" href="css/controls/progress.css">
+<link rel="stylesheet" href="css/controls/spinner.css">
+<link rel="stylesheet" href="css/controls/badge.css">
+<link rel="stylesheet" href="css/controls/tooltip.css">
+<link rel="stylesheet" href="css/controls/tree.css">
+<link rel="stylesheet" href="css/controls/color-picker.css">
+<link rel="stylesheet" href="css/controls/multiselect.css">
+<link rel="stylesheet" href="css/controls/autocomplete.css">
+</head>
+<body>
+
+<input class="theme-radio" type="radio" name="theme" id="th1" checked>
+<input class="theme-radio" type="radio" name="theme" id="th2">
+<input class="theme-radio" type="radio" name="theme" id="th3">
+<input class="theme-radio" type="radio" name="theme" id="th4">
+<input class="theme-radio" type="radio" name="theme" id="th5">
+<input class="theme-radio" type="radio" name="theme" id="th6">
+<input class="theme-radio" type="radio" name="theme" id="th7">
+
+<div class="bg"></div>
+
+<main class="console">
+
+  <!-- ====================== THEME ====================== -->
+  <div class="topbar">
+    <div class="combo theme-combo">
+      <details>
+        <summary>
+          <span class="tlbl">THEME</span>
+          <span class="val tv1">PHOSPHOR TEAL</span>
+          <span class="val tv2">TEAL BLUE</span>
+          <span class="val tv3">AMBER</span>
+          <span class="val tv4">CRIMSON</span>
+          <span class="val tv5">VIOLET</span>
+          <span class="val tv6">ZION DASHBOARD</span>
+          <span class="val tv7">TEAL BLUE V2</span>
+        </summary>
+        <div class="list">
+          <label for="th1">PHOSPHOR TEAL</label>
+          <label for="th2">TEAL BLUE</label>
+          <label for="th7">TEAL BLUE V2</label>
+          <label for="th3">AMBER</label>
+          <label for="th4">CRIMSON</label>
+          <label for="th5">VIOLET</label>
+          <label for="th6">ZION DASHBOARD</label>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ====================== MASTHEAD ====================== -->
+  <header class="masthead">
+    <div class="view-tab">
+      <span class="lbl">VIEW</span>
+      <span class="letter">C</span>
+    </div>
+    <div class="head">
+      <span class="microlbl">LAPD OS 9.22 // UI KIT</span>
+      <div class="big"><span class="caret-bar"></span>CONTROL INDEX</div>
+    </div>
+  </header>
+
+  <!-- ====================== 01 TEXTAREA ====================== -->
+  <section>
+    <div class="sec"><span class="n">01</span><span class="t">TEXTAREA</span><span class="jp">フィールドレポート</span></div>
+    <textarea spellcheck="false" placeholder="&#9656; AWAITING INPUT _">CASE 6-10-21 // MORTON FARM
+SUBJECT EVADED INITIAL SCAN.
+BASELINE DEVIATION RECORDED.</textarea>
+  </section>
+
+  <!-- ====================== 02 TEXTBOX ====================== -->
+  <section>
+    <div class="sec"><span class="n">02</span><span class="t">TEXTBOX</span><span class="jp">プロフィール</span></div>
+    <div class="tbox">
+      <input type="text" spellcheck="false" value="KD6-3.7" placeholder="&#9656; SERIAL _">
+    </div>
+  </section>
+
+  <!-- ====================== 03 CHECKBOX ====================== -->
+  <section>
+    <div class="sec"><span class="n">03</span><span class="t">CHECKBOX</span><span class="jp">データ群</span></div>
+    <div class="opts">
+      <label class="check"><input type="checkbox" checked><span class="mk"></span><span class="txt">DATA GROUP</span></label>
+      <label class="check"><input type="checkbox" checked><span class="mk"></span><span class="txt">DR CLASS</span></label>
+      <label class="check"><input type="checkbox"><span class="mk"></span><span class="txt">ARCHIVE LOCK</span></label>
+    </div>
+  </section>
+
+  <!-- ====================== 04 RADIO ====================== -->
+  <section>
+    <div class="sec"><span class="n">04</span><span class="t">RADIO BUTTON</span><span class="jp">系列</span></div>
+    <div class="opts">
+      <label class="radio"><input type="radio" name="series"><span class="mk"></span><span class="txt">NEXUS-6</span></label>
+      <label class="radio"><input type="radio" name="series" checked><span class="mk"></span><span class="txt">NEXUS-8</span></label>
+      <label class="radio"><input type="radio" name="series"><span class="mk"></span><span class="txt">NEXUS-9</span></label>
+    </div>
+  </section>
+
+  <!-- ====================== 05 COMBOBOX ====================== -->
+  <section>
+    <div class="sec"><span class="n">05</span><span class="t">COMBOBOX</span><span class="jp">型式</span></div>
+    <div class="combo">
+      <input type="radio" id="cb1" name="model">
+      <input type="radio" id="cb2" name="model" checked>
+      <input type="radio" id="cb3" name="model">
+      <details>
+        <summary>
+          <span class="val v1">NEXUS-6 // RETIRED</span>
+          <span class="val v2">NEXUS-8 // OPEN SERIES</span>
+          <span class="val v3">NEXUS-9 // COMPLIANT</span>
+        </summary>
+        <div class="list">
+          <label for="cb1">NEXUS-6 // RETIRED</label>
+          <label for="cb2">NEXUS-8 // OPEN SERIES</label>
+          <label for="cb3">NEXUS-9 // COMPLIANT</label>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ====================== 06 TAB CONTROL ====================== -->
+  <section>
+    <div class="sec"><span class="n">06</span><span class="t">TAB CONTROL</span><span class="jp">翻訳</span></div>
+    <div class="tabctl">
+      <input type="radio" id="tb1" name="tabs">
+      <input type="radio" id="tb2" name="tabs" checked>
+      <input type="radio" id="tb3" name="tabs">
+      <div class="tabbar">
+        <label for="tb1">HISTORY</label>
+        <label for="tb2">TRANSLATE</label>
+        <label for="tb3">DATA</label>
+      </div>
+      <div class="tabpanes">
+        <div class="pane p1">
+          <p>LOG 2049-06-10 // RETRIEVAL DISPATCHED.</p>
+          <p>LOG 2049-06-08 // FILE OPENED BY LT. JOSHI.</p>
+        </div>
+        <div class="pane p2">
+          <p>SOURCE STREAM LOCKED. OUTPUT: ENGLISH.</p>
+          <p>CONFIDENCE 0.97 // 2 SEGMENTS PENDING.</p>
+        </div>
+        <div class="pane p3">
+          <p>RECORDS ON FILE: 1187. RESTRICTED: 4.</p>
+          <p>LAST SYNC // SECTOR 6 ARCHIVE NODE.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 07 DATAGRID ====================== -->
+  <section>
+    <div class="sec"><span class="n">07</span><span class="t">DATAGRID</span><span class="jp">記録</span></div>
+    <div class="grid">
+      <div class="g-head"><span>ID</span><span>SUBJECT</span><span>CLASS</span><span>MATCH</span></div>
+      <div class="g-row"><span class="id">4847</span><span>UNKNOWN FEMALE</span><span>NEXUS-8</span><span class="x">x</span></div>
+      <div class="g-row sel"><span class="id">2181</span><span>UNKNOWN MALE</span><span>NEXUS-8</span><span class="x">x</span></div>
+      <div class="g-row"><span class="id">6601</span><span>MORTON, SAPPER</span><span>NEXUS-8</span><span class="x">x</span></div>
+      <div class="g-row"><span class="id">0394</span><span>RESTRICTED</span><span>&mdash;</span><span class="x">x</span></div>
+    </div>
+  </section>
+
+  <!-- ====================== 08 SLIDER ====================== -->
+  <section>
+    <div class="sec"><span class="n">08</span><span class="t">SLIDER</span><span class="jp">利得</span></div>
+    <div class="sliders">
+      <div class="slide">
+        <span class="nm">GAIN</span>
+        <input type="range" min="0" max="100" value="62">
+        <span class="vv">062</span>
+      </div>
+      <div class="slide">
+        <span class="nm">EXPOSURE</span>
+        <input type="range" min="0" max="100" value="31">
+        <span class="vv">031</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 09 IMAGE DISPLAY ====================== -->
+  <section>
+    <div class="sec"><span class="n">09</span><span class="t">IMAGE DISPLAY</span><span class="jp">走査</span></div>
+    <div class="well imgdisp">
+      <i class="ck tl"></i><i class="ck tr"></i><i class="ck bl"></i><i class="ck br"></i>
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#5fe8d2" stroke-width="1.2">
+        <circle cx="60" cy="60" r="44" opacity=".55"/>
+        <circle cx="60" cy="60" r="28" opacity=".8"/>
+        <circle cx="60" cy="60" r="3"  fill="#aefcec" stroke="none"/>
+        <line x1="60" y1="4"   x2="60" y2="26"/>
+        <line x1="60" y1="94"  x2="60" y2="116"/>
+        <line x1="4"   y1="60" x2="26" y2="60"/>
+        <line x1="94"  y1="60" x2="116" y2="60"/>
+        <path d="M22 22 h12 M22 22 v12" opacity=".5"/>
+        <path d="M98 22 h-12 M98 22 v12" opacity=".5"/>
+        <path d="M22 98 h12 M22 98 v-12" opacity=".5"/>
+        <path d="M98 98 h-12 M98 98 v-12" opacity=".5"/>
+      </svg>
+    </div>
+    <div class="imgstrip">
+      <span class="jp">プロフィール</span>
+      <span class="bar"></span>
+      <span class="chip"></span>
+      <span class="tag">SCAN 09 // 1:1</span>
+    </div>
+  </section>
+
+  <!-- ====================== 10 IMAGE UPLOAD ====================== -->
+  <section>
+    <div class="sec"><span class="n">10</span><span class="t">IMAGE UPLOAD</span><span class="jp">転送</span></div>
+    <label class="upload">
+      <input type="file" accept="image/*">
+      <span class="inner">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#6fe0cb" stroke-width="1.5" stroke-linecap="square">
+          <path d="M12 16V4"/>
+          <path d="M6.5 9.5 12 4l5.5 5.5"/>
+          <path d="M4 20h16"/>
+        </svg>
+        <div class="l1">DROP IMAGE FILE</div>
+        <div class="l2">OR CLICK TO BROWSE // 8 MB MAX</div>
+      </span>
+    </label>
+  </section>
+
+  <!-- ====================== 11 BUTTON / TEXT ====================== -->
+  <section>
+    <div class="sec"><span class="n">11</span><span class="t">BUTTON / TEXT</span><span class="jp">送信</span></div>
+    <div class="btnrow">
+      <button class="btn" type="button">TRANSMIT</button>
+      <button class="btn ghost" type="button">DISCARD</button>
+    </div>
+  </section>
+
+  <!-- ====================== 12 BUTTON / ICON ====================== -->
+  <section>
+    <div class="sec"><span class="n">12</span><span class="t">BUTTON / ICON</span><span class="jp">操作</span></div>
+    <div class="btnrow">
+      <button class="ibtn" type="button" title="SEARCH">
+        <svg width="17" height="17" viewBox="0 0 24 24">
+          <circle cx="10" cy="10" r="6.5"/>
+          <line x1="15" y1="15" x2="21" y2="21"/>
+        </svg>
+      </button>
+      <button class="ibtn" type="button" title="ACQUIRE">
+        <svg width="17" height="17" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="7"/>
+          <line x1="12" y1="1.5" x2="12" y2="6"/>
+          <line x1="12" y1="18" x2="12" y2="22.5"/>
+          <line x1="1.5" y1="12" x2="6" y2="12"/>
+          <line x1="18" y1="12" x2="22.5" y2="12"/>
+        </svg>
+      </button>
+      <button class="ibtn" type="button" title="ARCHIVE">
+        <svg width="17" height="17" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="5"/>
+          <path d="M5 9v11h14V9"/>
+          <line x1="10" y1="13" x2="14" y2="13"/>
+        </svg>
+      </button>
+      <button class="ibtn" type="button" title="TRANSMIT">
+        <svg width="17" height="17" viewBox="0 0 24 24">
+          <path d="M3 12 21 4l-5 16-4.5-6.5L3 12z"/>
+        </svg>
+      </button>
+      <button class="ibtn" type="button" title="PURGE">
+        <svg width="17" height="17" viewBox="0 0 24 24">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ====================== 13 TOGGLE SWITCH ====================== -->
+  <section>
+    <div class="sec"><span class="n">13</span><span class="t">TOGGLE SWITCH</span><span class="jp">切替</span></div>
+    <div class="opts">
+      <label class="tgl"><input type="checkbox" checked><span class="tk"></span><span class="txt">VOIGHT-KAMPFF OVERLAY</span></label>
+      <label class="tgl"><input type="checkbox"><span class="tk"></span><span class="txt">SECTOR ALERT FEED</span></label>
+    </div>
+  </section>
+
+  <!-- ====================== 14 PROGRESS BAR ====================== -->
+  <section>
+    <div class="sec"><span class="n">14</span><span class="t">PROGRESS BAR</span><span class="jp">進行</span></div>
+    <div class="sliders progress">
+      <div class="slide">
+        <span class="nm">UPLINK</span>
+        <span class="track"><span class="fill" style="width:67%"></span></span>
+        <span class="vv">067</span>
+      </div>
+      <div class="slide">
+        <span class="nm">SEARCHING</span>
+        <span class="track"><span class="fill scan"></span></span>
+        <span class="vv">&mdash;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 15 SPINNER ====================== -->
+  <section>
+    <div class="sec"><span class="n">15</span><span class="t">SPINNER</span><span class="jp">処理中</span></div>
+    <div class="spinrow">
+      <span class="spin mech"></span>
+      <span class="spin smooth"></span>
+      <span class="spinlbl">CROSS-REFERENCING ARCHIVE&hellip;</span>
+    </div>
+  </section>
+
+  <!-- ====================== 16 STATUS BADGE ====================== -->
+  <section>
+    <div class="sec"><span class="n">16</span><span class="t">STATUS BADGE</span><span class="jp">状態</span></div>
+    <div class="badges">
+      <span class="badge on"><i></i>ONLINE</span>
+      <span class="badge"><i></i>STANDBY</span>
+      <span class="badge"><i></i>ARCHIVED</span>
+      <span class="badge alert"><i></i>RESTRICTED</span>
+    </div>
+  </section>
+
+  <!-- ====================== 17 TOOLTIP ====================== -->
+  <section>
+    <div class="sec"><span class="n">17</span><span class="t">TOOLTIP</span><span class="jp">注釈</span></div>
+    <p class="tipline">
+      SUBJECT FLAGGED UNDER <span class="tip" data-tip="PROHIBITION ACT 2036 // SEC. 7">REPLICANT PROHIBITION</span>
+      PENDING <span class="tip" data-tip="BASELINE DEVIATION TEST">RE-EXAMINATION</span>.
+    </p>
+  </section>
+
+  <!-- ====================== 18 TREE VIEW ====================== -->
+  <section>
+    <div class="sec"><span class="n">18</span><span class="t">TREE VIEW</span><span class="jp">階層</span></div>
+    <div class="tree">
+      <details open>
+        <summary>
+          <span class="car"></span>
+          <svg class="fc" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V19H3V6z"/></svg>
+          <svg class="fo" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V12"/><path d="M2 12h20l-3 7H3l-1-7z"/></svg>
+          ARCHIVE // 2049
+        </summary>
+        <div class="tw">
+          <details open>
+            <summary>
+              <span class="car"></span>
+              <svg class="fc" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V19H3V6z"/></svg>
+              <svg class="fo" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V12"/><path d="M2 12h20l-3 7H3l-1-7z"/></svg>
+              CASE FILES
+            </summary>
+            <div class="tw">
+              <div class="leaf sel">
+                <svg width="13" height="13" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>
+                4847_PROFILE.DAT
+              </div>
+              <div class="leaf">
+                <svg width="13" height="13" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>
+                2181_PROFILE.DAT
+              </div>
+              <div class="leaf">
+                <svg width="13" height="13" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>
+                BASELINE_LOG.TXT
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="car"></span>
+              <svg class="fc" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V19H3V6z"/></svg>
+              <svg class="fo" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V12"/><path d="M2 12h20l-3 7H3l-1-7z"/></svg>
+              EVIDENCE
+            </summary>
+            <div class="tw">
+              <div class="leaf">
+                <svg width="13" height="13" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>
+                WOODEN_HORSE.SCN
+              </div>
+              <div class="leaf">
+                <svg width="13" height="13" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>
+                SERIAL_NR.IMG
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="car"></span>
+              <svg class="fc" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V19H3V6z"/></svg>
+              <svg class="fo" width="14" height="14" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V12"/><path d="M2 12h20l-3 7H3l-1-7z"/></svg>
+              DNA REGISTRY
+            </summary>
+            <div class="tw">
+              <div class="leaf">
+                <svg width="13" height="13" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>
+                6-10-21_ANOMALY.SEQ
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ====================== 19 COLOR PICKER ====================== -->
+  <section>
+    <div class="sec"><span class="n">19</span><span class="t">COLOR PICKER</span><span class="jp">色彩</span></div>
+    <div class="colorrow">
+      <div class="swatches">
+        <label class="sw" style="color:#5fe8d2"><input type="radio" name="clr" checked><i></i></label>
+        <label class="sw" style="color:#aefcec"><input type="radio" name="clr"><i></i></label>
+        <label class="sw" style="color:#3c9dd8"><input type="radio" name="clr"><i></i></label>
+        <label class="sw" style="color:#ffb13c"><input type="radio" name="clr"><i></i></label>
+        <label class="sw" style="color:#ff6e3c"><input type="radio" name="clr"><i></i></label>
+      </div>
+      <div class="custom-c">
+        <input type="color" value="#5fe8d2">
+        <span class="cl">CUSTOM // PHOSPHOR</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 20 COMBOBOX / MULTI ====================== -->
+  <section>
+    <div class="sec"><span class="n">20</span><span class="t">COMBOBOX / MULTI-SELECT</span><span class="jp">複数選択</span></div>
+    <div class="combo multi">
+      <input type="checkbox" id="ms1">
+      <input type="checkbox" id="ms2" checked>
+      <input type="checkbox" id="ms3">
+      <input type="checkbox" id="ms4" checked>
+      <details>
+        <summary>
+          <span class="ph">ASSIGN UNITS _</span>
+          <span class="mchip m1">PATROL</span>
+          <span class="mchip m2">RETRIEVAL</span>
+          <span class="mchip m3">FORENSICS</span>
+          <span class="mchip m4">ARCHIVE</span>
+        </summary>
+        <div class="list">
+          <label for="ms1">PATROL</label>
+          <label for="ms2">RETRIEVAL</label>
+          <label for="ms3">FORENSICS</label>
+          <label for="ms4">ARCHIVE</label>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ====================== 21 AUTOCOMPLETE ====================== -->
+  <section>
+    <div class="sec"><span class="n">21</span><span class="t">AUTOCOMPLETE</span><span class="jp">補完</span></div>
+    <div class="auto">
+      <input type="checkbox" id="ac1" checked>
+      <input type="checkbox" id="ac2">
+      <input type="checkbox" id="ac3">
+      <input type="checkbox" id="ac4">
+      <input type="checkbox" id="ac5">
+      <div class="box">
+        <label class="achip k1" for="ac1">DECKARD, R. <i>&#10005;</i></label>
+        <label class="achip k2" for="ac2">JOSHI, LT. <i>&#10005;</i></label>
+        <label class="achip k3" for="ac3">GAFF, E. <i>&#10005;</i></label>
+        <label class="achip k4" for="ac4">KD6-3.7 <i>&#10005;</i></label>
+        <label class="achip k5" for="ac5">STELLINE, A. <i>&#10005;</i></label>
+        <input type="text" spellcheck="false" placeholder="&#9656; SEARCH PERSONNEL _">
+      </div>
+      <div class="sug">
+        <div class="sughead">SUGGESTED // PERSONNEL FILE</div>
+        <label for="ac1">DECKARD, R.</label>
+        <label for="ac2">JOSHI, LT.</label>
+        <label for="ac3">GAFF, E.</label>
+        <label for="ac4">KD6-3.7</label>
+        <label for="ac5">STELLINE, A.</label>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-bar"></div>
+
+</main>
+
+<div class="mottle"></div>
+<div class="scanlines"></div>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="edge-glow"><i></i><i></i></div>
+
+</body>
+</html>

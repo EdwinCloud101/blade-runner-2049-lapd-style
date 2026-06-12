@@ -1,0 +1,82 @@
+/* ============================================================
+   CONTROL · COMBOBOX  (CSS-only, radio-driven, <details>)
+   requires: core.css
+   ------------------------------------------------------------
+   The pure-CSS combobox needs one radio per option and a small
+   block of per-instance "wiring" rules (see bottom) that map
+   each option id to its selected-value label + list highlight.
+   Copy that block and renumber the ids for each new combobox.
+   ============================================================ */
+.combo{ position:relative; width:300px; }
+.combo > input{ position:absolute; opacity:0; pointer-events:none; }
+.combo summary{
+  list-style:none;
+  height:40px;
+  display:flex; align-items:center;
+  cursor:pointer;
+  background:
+    linear-gradient(180deg, rgba(32, 95, 90, .18), rgba(14, 44, 45, .14)),
+    var(--fill-well);
+  border:1px solid var(--line-dim);
+  box-shadow:inset 0 0 18px rgba(70, 200, 180, .09);
+  padding:0 14px;
+  font-size:12px; letter-spacing:3px;
+  color:var(--teal);
+  text-shadow:
+    -1px .5px 0 rgba(255, 62, 30, .28),
+     0 0 6px rgba(95, 232, 210, .50);
+  transition:border-color .15s, box-shadow .15s;
+}
+.combo summary::-webkit-details-marker{ display:none; }
+.combo summary::after{
+  content:""; margin-left:auto;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:6px solid var(--teal-mid);
+  filter:drop-shadow(0 0 3px rgba(90,220,200,.5));
+  transition:transform .15s;
+}
+.combo summary:hover{ border-color:var(--line); }
+.combo details[open] summary{
+  border-color:var(--line);
+  box-shadow:
+    inset 0 0 18px rgba(70, 200, 180, .14),
+    0 0 12px rgba(95, 232, 210, .20);
+}
+.combo details[open] summary::after{ transform:rotate(180deg); }
+.combo .list{
+  position:absolute; left:0; right:0; top:calc(100% + 4px); z-index:6;
+  border:1px solid var(--line);
+  background:rgba(9, 27, 30, .97);
+  box-shadow:
+    0 0 18px rgba(95, 232, 210, .18),
+    inset 0 0 14px rgba(70, 200, 180, .08);
+}
+.combo .list label{
+  display:flex; align-items:center;
+  height:34px; padding:0 14px;
+  font-size:10px; letter-spacing:3px;
+  color:var(--teal-dim);
+  cursor:pointer;
+  border-bottom:1px solid var(--line-faint);
+  transition:background .12s, color .12s;
+}
+.combo .list label:last-child{ border-bottom:none; }
+.combo .list label:hover{
+  background:rgba(80, 210, 190, .10);
+  color:var(--teal-bright);
+  text-shadow:0 0 6px rgba(140, 245, 225, .6);
+}
+.combo .val{ display:none; }
+
+/* ---- per-instance wiring (demo: ids cb1..cb3) -------------- */
+#cb1:checked ~ details .v1,
+#cb2:checked ~ details .v2,
+#cb3:checked ~ details .v3{ display:inline; }
+#cb1:checked ~ details .list label[for=cb1],
+#cb2:checked ~ details .list label[for=cb2],
+#cb3:checked ~ details .list label[for=cb3]{
+  color:var(--teal);
+  background:rgba(80, 210, 190, .07);
+  text-shadow:0 0 6px rgba(95, 232, 210, .5);
+}
